@@ -42,3 +42,10 @@ function atualizarContadorCarrinho() {
 }
 
 window.onload = atualizarContadorCarrinho;
+
+
+ function verDetalhesProduto(nome, preco, imagem, descricao) {
+    const produto = { nome, preco, imagem, descricao };
+    localStorage.setItem('produtoSelecionado', JSON.stringify(produto));
+    window.location.href = 'produto.html';
+ }

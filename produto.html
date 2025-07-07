@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Produto - GK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .imagem-produto {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .imagem-produto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .detalhes {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .detalhes h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .detalhes p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .preco {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .btn-comprar {
+      background: #000;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn-comprar:hover {
+      background: #222;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="imagem-produto">
+  <img id="produto-imagem" src="" alt="Imagem do Produto" />
+</div>
+   <div class="detalhes">
+  <h1 id="produto-nome">Produto</h1>
+  <p id="produto-descricao">Descrição do produto.</p>
+  <div class="preco" id="produto-preco">R$ 0,00</div>
+  <button class="btn-comprar" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+</div>
+
+<script src="js/produto.js"></script>
+ 
+
+</body>
+</html>
