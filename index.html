@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GK - Loja de Eletrônicos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <button id="btn-menu" aria-label="Abrir menu">&#9776;</button>
+  <nav id="menu">
+    <a href="#home">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+    <a href="carrinho.html" id="abrir-carrinho">🛒 Carrinho (<span id="contador">0</span>)</a>
+  </nav>
+  <div class="logo">GK</div>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-carousel">
+    <img src="img/fone.jpg" alt="Banner 1" class="active" />
+    <img src="img/relogio.jpg" alt="Banner 2" />
+    <img src="img/celular.jpg" alt="Banner 3" />
+  </div>
+  <div class="hero-text">
+    <h1>Bem-vindo à GK</h1>
+    <p>Seu estilo, nosso compromisso.</p>
+    <a href="#produtos" class="btn">Ver Produtos</a>
+  </div>
+</section>
+
+<section id="categorias" class="categorias">
+  <h2>Categorias em Destaque</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/fone.jpg" alt="Fones de Ouvido" />
+      <span>Fones de Ouvido</span>
+    </div>
+    <div class="card">
+      <img src="img/celular.jpg" alt="Smartphones" />
+      <span>Smartphones</span>
+    </div>
+    <div class="card">
+      <img src="img/relogio.jpg" alt="Acessórios" />
+      <span>Acessórios</span>
+    </div>
+  </div>
+</section>
+
+<section id="produtos">
+  <h2>Produtos em Destaque</h2>
+  <div class="grid">
+    <div class="produto">
+      <img src="img/celular.jpg" alt="Smartphone GK" />
+      <h3>Smartphone</h3>
+      <p>R$ 2.000,00</p>
+      <button onclick="adicionarAoCarrinho('Smartphone', 2000, 'img/celular.jpg')">Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="img/relogio.jpg" alt="Smartwatch GK" />
+      <h3>Smartwatch</h3>
+      <p>R$ 750,00</p>
+      <button onclick="adicionarAoCarrinho('Smartwatch', 750, 'img/relogio.jpg')">Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="img/notbook.jpg" alt="Notebook GK" />
+      <h3>Notebook</h3>
+      <p>R$ 3.500,00</p>
+      <button onclick="adicionarAoCarrinho('Notebook', 3500, 'img/notbook.jpg')">Comprar</button>
+    </div>
+  </div>
+</section>
+
+<section id="produtos">
+  <h2>Os melhores Acessórios</h2>
+  <div class="grid">
+    <div class="produto">
+      <img src="img/celular.jpg" alt="Smartphone GK" />
+      <h3>Smartphone</h3>
+      <p>R$ 2.000,00</p>
+      <button onclick="adicionarAoCarrinho('Smartphone', 2000, 'img/celular.jpg')">Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="img/relogio.jpg" alt="Smartwatch GK" />
+      <h3>Smartwatch</h3>
+      <p>R$ 750,00</p>
+      <button onclick="adicionarAoCarrinho('Smartwatch', 750, 'img/relogio.jpg')">Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="img/notbook.jpg" alt="Notebook GK" />
+      <h3>Notebook</h3>
+      <p>R$ 3.500,00</p>
+      <button onclick="adicionarAoCarrinho('Notebook', 3500, 'img/notbook.jpg')">Comprar</button>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2>Sobre a GK</h2>
+  <p>A GK é dedicada a fornecer produtos eletrônicos com excelente atendimento. Nossa missão é oferecer a melhor experiência de compra online.</p>
+</section>
+
+<footer>
+  <p>© 2025 GK - Todos os direitos reservados</p>
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

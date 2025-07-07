@@ -1,0 +1,236 @@
+ * {
+      margin: 0; 
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: white;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      order: 2; /* Logo à direita */
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      order: 1;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Botão hamburguer, escondido no desktop */
+    #btn-menu {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      order: 0; /* No mobile fica à esquerda */
+    }
+
+    /* Responsividade para menu hamburguer */
+    @media (max-width: 768px) {
+      header {
+        justify-content: flex-start;
+      }
+
+      #btn-menu {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background: #000;
+        transition: max-height 0.3s ease-in-out;
+        order: 1;
+        margin-top: 0.5rem;
+      }
+
+      nav.show {
+        max-height: 300px; /* quando aberto */
+      }
+
+      nav a {
+        padding: 1rem 2rem;
+        border-top: 1px solid #222;
+      }
+
+      .logo {
+        position: absolute;
+        right: 2rem;
+        order: 2;
+      }
+    }
+
+    /* Seu CSS restante */
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .hero-carousel img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      margin: 0.8rem 0;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      background: #d4af37;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    section {
+      padding: 3rem 2rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card, .produto {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .card img, .produto img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .produto h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .produto p {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .produto button {
+      background: #d4af37;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 0.6rem 1rem;
+      margin-top: 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #sobre p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+    }
