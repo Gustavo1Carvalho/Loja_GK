@@ -5,15 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GK - Login e Cadastro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/login.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .switch {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .switch a {
+      color: #2a66ff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nome-sobrenome {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container" id="form-container">
     <h2 id="form-title">Login</h2>
-
-     <div class="form-group">
-      <label for="email">Nome</label>
-      <input type="email" id="email" placeholder="Digite seu nome" />
+    <div class="form-group nome-sobrenome" id="campo-nome">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" placeholder="Digite seu nome" />
+    </div>
+    <div class="form-group nome-sobrenome" id="campo-sobrenome">
+      <label for="sobrenome">Sobrenome</label>
+      <input type="text" id="sobrenome" placeholder="Digite seu sobrenome" />
     </div>
     <div class="form-group">
       <label for="email">E-mail</label>
@@ -28,6 +92,67 @@
       <p id="switch-text">Não tem uma conta? <a onclick="alternarParaCadastro()">Cadastrar</a></p>
     </div>
   </div>
-<script src="js/login.js"></script>
+
+  <script>
+    let modoCadastro = false;
+
+    function alternarParaCadastro() {
+      const title = document.getElementById('form-title');
+      const button = document.getElementById('submit-btn');
+      const switchText = document.getElementById('switch-text');
+      document.getElementById('campo-nome').style.display = 'block';
+      document.getElementById('campo-sobrenome').style.display = 'block';
+
+      if (!modoCadastro) {
+        title.textContent = 'Cadastro';
+        button.textContent = 'Cadastrar';
+        switchText.innerHTML = 'Já tem uma conta? <a onclick="alternarParaLogin()">Entrar</a>';
+        modoCadastro = true;
+      }
+    }
+
+    function alternarParaLogin() {
+      const title = document.getElementById('form-title');
+      const button = document.getElementById('submit-btn');
+      const switchText = document.getElementById('switch-text');
+      document.getElementById('campo-nome').style.display = 'none';
+      document.getElementById('campo-sobrenome').style.display = 'none';
+
+      title.textContent = 'Login';
+      button.textContent = 'Entrar';
+      switchText.innerHTML = 'Não tem uma conta? <a onclick="alternarParaCadastro()">Cadastrar</a>';
+      modoCadastro = false;
+    }
+
+    function handleLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const nome = document.getElementById('nome')?.value;
+      const sobrenome = document.getElementById('sobrenome')?.value;
+
+      if (!email || !senha || (modoCadastro && (!nome || !sobrenome))) {
+        alert("Preencha todos os campos");
+        return;
+      }
+
+      if (modoCadastro) {
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        usuarios.push({ nome, sobrenome, email, senha });
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        alert("Cadastro realizado com sucesso!");
+        alternarParaLogin();
+      } else {
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+        if (usuario) {
+          alert("Login realizado com sucesso!");
+          window.location.href = 'index.html';
+        } else {
+          alert("E-mail ou senha inválidos!");
+        }
+      }
+    }
+  </script>
 </body>
 </html>

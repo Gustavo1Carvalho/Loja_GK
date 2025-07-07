@@ -1,9 +1,11 @@
- let modoCadastro = false;
+   let modoCadastro = false;
 
     function alternarParaCadastro() {
       const title = document.getElementById('form-title');
       const button = document.getElementById('submit-btn');
       const switchText = document.getElementById('switch-text');
+      document.getElementById('campo-nome').style.display = 'block';
+      document.getElementById('campo-sobrenome').style.display = 'block';
 
       if (!modoCadastro) {
         title.textContent = 'Cadastro';
@@ -17,6 +19,8 @@
       const title = document.getElementById('form-title');
       const button = document.getElementById('submit-btn');
       const switchText = document.getElementById('switch-text');
+      document.getElementById('campo-nome').style.display = 'none';
+      document.getElementById('campo-sobrenome').style.display = 'none';
 
       title.textContent = 'Login';
       button.textContent = 'Entrar';
@@ -27,15 +31,17 @@
     function handleLogin() {
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;
+      const nome = document.getElementById('nome')?.value;
+      const sobrenome = document.getElementById('sobrenome')?.value;
 
-      if (!email || !senha) {
+      if (!email || !senha || (modoCadastro && (!nome || !sobrenome))) {
         alert("Preencha todos os campos");
         return;
       }
 
       if (modoCadastro) {
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        usuarios.push({ email, senha });
+        usuarios.push({ nome, sobrenome, email, senha });
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
         alert("Cadastro realizado com sucesso!");
         alternarParaLogin();
@@ -45,7 +51,6 @@
 
         if (usuario) {
           alert("Login realizado com sucesso!");
-          // redirecionar para a loja
           window.location.href = 'index.html';
         } else {
           alert("E-mail ou senha inválidos!");
